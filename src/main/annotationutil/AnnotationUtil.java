@@ -1,15 +1,13 @@
-package annotationutil;
+package main.annotationutil;
 
-import annotation.DateFormat;
-import annotation.MergeAlias;
+import main.annotation.DateFormat;
+import main.annotation.MergeAlias;
 import com.google.gson.Gson;
-import commonutil.CommonUtil;
-import org.w3c.dom.CDATASection;
+import main.commonutil.CommonUtil;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -29,7 +27,16 @@ public class AnnotationUtil {
                 for (String s : annotation.value()) {
                     Object s1 = otherMap.get(s);
                     if (s1 != null) {
+
                         try {
+                            if(annotation.convert().length>0) {
+                                Method otherMethod = other.getClass().getMethod("get" + CommonUtil.changeFirstToUpperCase(s), null);
+                                s1= annotation.convert()[0].newInstance().convert(otherMethod.invoke(other));
+                                primeMap.put(declaredField.getName(), s1);
+                                otherMap.remove(s);
+                                break;
+                            }
+
                             if (!annotation.dateToString().equals("")) {
                                 //other 的 date filed merg 進prime的string field
                                 String patteren = annotation.dateToString();

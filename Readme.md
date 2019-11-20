@@ -5,6 +5,8 @@ ReadMe
         - [CheckNullAndEmpty](#checknullandempty)
         - [DateFormat](#dateformat)
         - [MergeAlias](#mergealias)
+    - [Interface List](#interface-list)
+        - [Convartable](#convartable)
     - [Class List](#class-list)
         - [CheckUtil](#checkutil)
         - [AnnotationUtil](#annotationutil)
@@ -32,6 +34,16 @@ ReadMe
   - value (欄位別名，支援陣列)
   - stringToDate default '' (將字串轉換為日期格式，需輸入字串的pattern才會作用 )
   - dateToString default '' (將日期格式轉換為字串，需輸入字串的pattern才會作用 )
+  - convert defalut {} (需傳入實現Convertable interface的class)
+
+### Interface List ###
+- Convertable
+
+##### Convartable ######
+搭配 MergeAlias的 convert 使用
+```
+convert(object) -> { return (value you want)  }
+```
 
 ### Class List ###
 - CheckUtil

@@ -1,4 +1,6 @@
-package annotation;
+package main.annotation;
+
+import main.annotation.interfacepkg.Convertable;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -14,4 +16,6 @@ public @interface MergeAlias {
     String stringToDate() default "";
 
     String dateToString() default "";
+
+    Class<? extends Convertable>[] convert() default {};
 }

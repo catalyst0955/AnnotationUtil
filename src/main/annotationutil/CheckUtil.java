@@ -1,7 +1,7 @@
-package annotationutil;
+package main.annotationutil;
 
-import annotation.CheckNullAndEmpty;
-import commonutil.CommonUtil;
+import main.annotation.CheckNullAndEmpty;
+import main.commonutil.CommonUtil;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
